@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Studio Admin — E-Portfolio Arfido</title>
+  <meta name="theme-color" content="#f6f1e7" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%231f4fff'/%3E%3Cstop offset='1' stop-color='%23008f8a'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='%23fffdf8'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='700' fill='url(%23g)' text-anchor='middle'%3EAR%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/admin.css" />
+</head>
+<body class="admin-body">
+  <div class="bg-fx" aria-hidden="true">
+    <div class="aurora aurora-1"></div>
+    <div class="aurora aurora-2"></div>
+    <div class="aurora aurora-3"></div>
+    <div class="grid-lines"></div>
+    <div class="grain"></div>
+  </div>
+
+  <!-- ============================ LOGIN ============================ -->
+  <div class="login-view" id="loginView">
+    <div class="login-card glass">
+      <div class="login-brand">
+        <span class="brand-mark">AR</span>
+        <div>
+          <strong>E-Portfolio Studio</strong>
+          <small>Arfido Ramadhani</small>
+        </div>
+      </div>
+      <span class="login-badge"><span class="pulse-dot"></span> Area Terbatas</span>
+      <h1>Masuk ke <span class="grad-text">Studio</span></h1>
+      <p class="login-desc">Kelola profil, rancangan pembelajaran, video praktik, refleksi, dan arsip Google Drive.</p>
+
+      <form id="loginForm" autocomplete="off">
+        <label class="field">
+          <span>Passcode Admin</span>
+          <div class="pass-wrap">
+            <input type="password" id="loginPass" placeholder="Masukkan passcode" required autofocus />
+            <button type="button" id="togglePass" class="pass-toggle" aria-label="Tampilkan passcode">
+              <span data-icon="eye" data-size="18"></span>
+            </button>
+          </div>
+        </label>
+        <p class="form-error" id="loginError" hidden></p>
+        <button type="submit" class="btn btn-primary btn-block">
+          <span>Masuk</span>
+          <span data-icon="arrowRight" data-size="17"></span>
+        </button>
+      </form>
+
+      <p class="login-hint" id="loginHint">Passcode awal: <code>arfido2026</code> — segera ganti setelah masuk.</p>
+      <a class="login-back" href="index.html"><span data-icon="arrowRight" data-size="15" class="flip-x"></span> Kembali ke portofolio</a>
+    </div>
+    <p class="login-foot">Data tersimpan lokal di browser ini. Gunakan menu Pengaturan untuk mencadangkan data.</p>
+  </div>
+
+  <!-- ============================ APP ============================ -->
+  <div class="admin-app" id="adminApp" hidden>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-head">
+        <a class="brand" href="index.html">
+          <span class="brand-mark">AR</span>
+          <span class="brand-text"><strong>Arfido</strong><small>Studio</small></span>
+        </a>
+        <button class="sidebar-close" id="sidebarClose" aria-label="Tutup menu"><span data-icon="x" data-size="18"></span></button>
+      </div>
+
+      <nav class="side-nav" aria-label="Menu admin">
+        <span class="side-label">Konten</span>
+        <button class="side-link is-active" data-view="dashboard">
+          <span data-icon="home" data-size="17"></span><span>Ringkasan</span>
+        </button>
+        <button class="side-link" data-view="profil">
+          <span data-icon="users" data-size="17"></span><span>Profil Mahasiswa</span>
+        </button>
+        <button class="side-link" data-view="rancangan">
+          <span data-icon="book" data-size="17"></span><span>Rancangan</span><span class="side-count" id="countLessons">0</span>
+        </button>
+        <button class="side-link" data-view="video">
+          <span data-icon="video" data-size="17"></span><span>Video Praktik</span><span class="side-count" id="countVideos">0</span>
+        </button>
+        <button class="side-link" data-view="refleksi">
+          <span data-icon="refresh" data-size="17"></span><span>Analisis &amp; Refleksi</span><span class="side-count" id="countReflections">0</span>
+        </button>
+        <button class="side-link" data-view="arsip">
+          <span data-icon="folder" data-size="17"></span><span>Arsip Drive</span><span class="side-count" id="countArchives">0</span>
+        </button>
+        <span class="side-label">Sistem</span>
+        <button class="side-link" data-view="drive">
+          <span data-icon="drive" data-size="17"></span><span>Google Drive</span><span class="status-dot" id="driveDot"></span>
+        </button>
+        <button class="side-link" data-view="pengaturan">
+          <span data-icon="settings" data-size="17"></span><span>Pengaturan</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-foot">
+        <div class="storage-mini">
+          <div class="storage-row"><span>Media lokal</span><b id="storageText">0 KB</b></div>
+          <div class="storage-bar"><span id="storageBar"></span></div>
+          <small>Foto &amp; file kecil tersimpan di browser.</small>
+        </div>
+        <button class="btn btn-ghost btn-sm btn-block" id="logoutBtn"><span data-icon="logout" data-size="15"></span> Keluar</button>
+      </div>
+    </aside>
+
+    <div class="sidebar-scrim" id="sidebarScrim"></div>
+
+    <div class="admin-main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="sidebar-open" id="sidebarOpen" aria-label="Buka menu"><span data-icon="menu" data-size="19"></span></button>
+          <div>
+            <span class="crumb">Studio / <span id="crumb">Ringkasan</span></span>
+            <h1 id="viewTitle">Ringkasan</h1>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <span class="save-status" id="saveStatus"><span class="save-dot"></span> Tersimpan</span>
+          <a class="btn btn-ghost btn-sm" href="index.html" target="_blank" rel="noopener">
+            <span data-icon="eye" data-size="15"></span><span>Lihat Situs</span>
+          </a>
+        </div>
+      </header>
+
+      <main class="admin-content">
+        <!-- ---------------------- DASHBOARD ---------------------- -->
+        <section class="panel is-active" data-panel="dashboard">
+          <div class="dash-stats" id="dashStats"></div>
+
+          <div class="dash-columns">
+            <article class="admin-card">
+              <div class="card-head">
+                <div><h3>Kelengkapan Portofolio</h3><p>Checklist sebelum submit tugas.</p></div>
+                <span class="big-progress" id="completePct">0%</span>
+              </div>
+              <div class="progress"><span id="completeBar"></span></div>
+              <ul class="checklist" id="checklist"></ul>
+            </article>
+
+            <article class="admin-card">
+              <div class="card-head"><div><h3>Akses Cepat</h3><p>Lompat ke pekerjaan yang sering dipakai.</p></div></div>
+              <div class="quick-grid">
+                <button class="quick-btn" data-view="profil"><span data-icon="users" data-size="18"></span><strong>Edit Profil</strong><small>Narasi &amp; foto</small></button>
+                <button class="quick-btn" data-add="lesson"><span data-icon="plus" data-size="18"></span><strong>Tambah Modul</strong><small>Rancangan ajar</small></button>
+                <button class="quick-btn" data-add="video"><span data-icon="video" data-size="18"></span><strong>Tautkan Video</strong><small>YouTube / Drive</small></button>
+                <button class="quick-btn" data-add="archive"><span data-icon="folder" data-size="18"></span><strong>Tambah Arsip</strong><small>Link Drive</small></button>
+                <button class="quick-btn" data-view="drive"><span data-icon="drive" data-size="18"></span><strong>Google Drive</strong><small>Upload &amp; folder</small></button>
+                <button class="quick-btn" data-view="pengaturan"><span data-icon="save" data-size="18"></span><strong>Backup Data</strong><small>Export JSON</small></button>
+              </div>
+            </article>
+          </div>
+
+          <article class="admin-card">
+            <div class="card-head"><div><h3>Status Konten</h3><p>Ringkasan isi portofolio saat ini.</p></div></div>
+            <div class="status-table" id="statusTable"></div>
+          </article>
+        </section>
+
+        <!-- ---------------------- PROFIL ---------------------- -->
+        <section class="panel" data-panel="profil">
+          <article class="admin-card">
+            <div class="card-head">
+              <div><h3>Foto &amp; Identitas</h3><p>Ditampilkan pada hero, kartu profil, dan footer.</p></div>
+            </div>
+            <div class="photo-uploader">
+              <div class="photo-preview" id="profilePhotoPreview">
+                <span>AR</span>
+                <img alt="Pratinjau foto profil" hidden />
+              </div>
+              <div class="photo-actions">
+                <div class="btn-row">
+                  <label class="btn btn-ghost btn-sm">
+                    <span data-icon="upload" data-size="15"></span><span>Pilih Foto</span>
+                    <input type="file" id="profilePhotoInput" accept="image/*" hidden />
+                  </label>
+                  <button class="btn btn-ghost btn-sm" id="profilePhotoRemove">Hapus</button>
+                </div>
+                <p class="hint">JPG/PNG. Foto otomatis dikompres menjadi maksimal 1600 px. Tersimpan lokal di browser.</p>
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <label class="field"><span>Nama Lengkap</span><input data-bind="profile.name" type="text" placeholder="Nama lengkap dan gelar" /></label>
+              <label class="field"><span>Nama Panggilan</span><input data-bind="profile.shortName" type="text" /></label>
+              <label class="field"><span>Inisial (2 huruf)</span><input data-bind="profile.initials" type="text" maxlength="3" /></label>
+              <label class="field"><span>Peran</span><input data-bind="profile.role" type="text" /></label>
+              <label class="field"><span>Kampus</span><input data-bind="profile.campus" type="text" /></label>
+              <label class="field"><span>Program Studi</span><input data-bind="profile.program" type="text" /></label>
+              <label class="field"><span>Asal Daerah</span><input data-bind="profile.origin" type="text" /></label>
+              <label class="field"><span>Email</span><input data-bind="profile.email" type="email" placeholder="nama@email.com" /></label>
+              <label class="field"><span>Telepon (opsional)</span><input data-bind="profile.phone" type="text" /></label>
+              <label class="field field-full"><span>Alamat Lengkap</span><input data-bind="profile.address" type="text" /></label>
+            </div>
+          </article>
+
+          <article class="admin-card">
+            <div class="card-head"><div><h3>Bagian Hero</h3><p>Teks besar yang pertama dilihat pengunjung.</p></div></div>
+            <div class="form-grid">
+              <label class="field"><span>Badge Atas</span><input data-bind="profile.badge" type="text" /></label>
+              <label class="field"><span>Kicker</span><input data-bind="profile.heroKicker" type="text" /></label>
+              <label class="field"><span>Nama Baris 1</span><input data-bind="profile.heroLine1" type="text" /></label>
+              <label class="field"><span>Nama Baris 2</span><input data-bind="profile.heroLine2" type="text" /></label>
+              <label class="field field-full"><span>Tagline</span><textarea data-bind="profile.tagline" rows="3"></textarea></label>
+            </div>
+          </article>
+
+          <article class="admin-card">
+            <div class="card-head"><div><h3>Narasi Profil</h3><p>Asal daerah, keunikan, inspirasi, tujuan, dan visi.</p></div></div>
+            <div class="form-grid">
+              <label class="field field-full"><span>Judul Narasi</span><input data-bind="profile.story.title" type="text" /></label>
+              <label class="field field-full">
+                <span>Asal &amp; Keunikan Daerah</span>
+                <textarea data-bind="profile.story.origin" rows="9"></textarea>
+                <small class="hint">Pisahkan paragraf dengan satu baris kosong.</small>
+              </label>
+            </div>
+
+            <div class="subhead">
+              <div><h4>Kartu Keunikan</h4><p>Tiga hal khas dari daerah asal.</p></div>
+              <button class="btn btn-ghost btn-sm" id="addUnique"><span data-icon="plus" data-size="14"></span> Tambah</button>
+            </div>
+            <div class="repeater" id="uniqueRepeater"></div>
+
+            <div class="form-grid">
+              <label class="field field-full"><span>Inspirasi Menjadi Guru</span><textarea data-bind="profile.story.inspiration" rows="8"></textarea></label>
+              <label class="field field-full"><span>Tujuan Menjadi Guru Profesional</span><textarea data-bind="profile.story.purpose" rows="8"></textarea></label>
+              <label class="field"><span>Judul Visi</span><input data-bind="profile.story.visionTitle" type="text" /></label>
+              <label class="field field-full"><span>Pernyataan Visi</span><textarea data-bind="profile.story.vision" rows="4"></textarea></label>
+              <label class="field"><span>Pilar 1</span><input data-bind="profile.pillars.0" type="text" /></label>
+              <label class="field"><span>Pilar 2</span><input data-bind="profile.pillars.1" type="text" /></label>
+              <label class="field"><span>Pilar 3</span><input data-bind="profile.pillars.2" type="text" /></label>
+            </div>
+          </article>
+
+          <article class="admin-card">
+            <div class="card-head"><div><h3>Kutipan &amp; Statistik</h3><p>Kutipan penutup profil dan angka ringkas di hero.</p></div></div>
+            <div class="form-grid">
+              <label class="field field-full"><span>Kutipan</span><textarea data-bind="profile.story.quote" rows="3"></textarea></label>
+              <label class="field"><span>Penulis Kutipan</span><input data-bind="profile.story.quoteAuthor" type="text" /></label>
+            </div>
+            <div class="subhead"><div><h4>Statistik Hero</h4><p>Empat angka ringkas.</p></div></div>
+            <div class="form-grid form-grid-4">
+              <label class="field"><span>Nilai 1</span><input data-bind="profile.stats.0.value" type="text" /></label>
+              <label class="field"><span>Label 1</span><input data-bind="profile.stats.0.label" type="text" /></label>
+              <label class="field"><span>Nilai 2</span><input data-bind="profile.stats.1.value" type="text" /></label>
+              <label class="field"><span>Label 2</span><input data-bind="profile.stats.1.label" type="text" /></label>
+              <label class="field"><span>Nilai 3</span><input data-bind="profile.stats.2.value" type="text" /></label>
+              <label class="field"><span>Label 3</span><input data-bind="profile.stats.2.label" type="text" /></label>
+              <label class="field"><span>Nilai 4</span><input data-bind="profile.stats.3.value" type="text" /></label>
+              <label class="field"><span>Label 4</span><input data-bind="profile.stats.3.label" type="text" /></label>
+            </div>
+          </article>
+        </section>
+
+        <!-- ---------------------- RANCANGAN ---------------------- -->
+        <section class="panel" data-panel="rancangan">
+          <div class="panel-head">
+            <div>
+              <span class="eyebrow">Produk 01</span>
+              <h2>Rancangan Pembelajaran</h2>
+              <p>Modul ajar siklus 1 hingga 4, lengkap dengan analisis mendalam dan tautan Google Drive.</p>
+            </div>
+            <button class="btn btn-primary" data-add="lesson"><span data-icon="plus" data-size="16"></span> Tambah Modul</button>
+          </div>
+          <div class="admin-list" id="lessonList"></div>
+        </section>
+
+        <!-- ---------------------- VIDEO ---------------------- -->
+        <section class="panel" data-panel="video">
+          <div class="panel-head">
+            <div>
+              <span class="eyebrow">Produk 02</span>
+              <h2>Video Praktik Mengajar</h2>
+              <p>Tautkan video YouTube atau Google Drive, lalu tulis analisis momen penting.</p>
+            </div>
+            <button class="btn btn-primary" data-add="video"><span data-icon="plus" data-size="16"></span> Tambah Video</button>
+          </div>
+          <div class="admin-list" id="videoList"></div>
+        </section>
+
+        <!-- ---------------------- REFLEKSI ---------------------- -->
+        <section class="panel" data-panel="refleksi">
+          <article class="admin-card">
+            <div class="card-head"><div><h3>Analisis Perkembangan</h3><p>Tampil di bagian atas timeline refleksi.</p></div></div>
+            <div class="form-grid">
+              <label class="field field-full"><span>Paragraf Pembuka</span><textarea data-bind="reflectionOverview.intro" rows="4"></textarea></label>
+              <label class="field field-full"><span>Rencana Tindak Lanjut</span><textarea data-bind="reflectionOverview.followUp" rows="4"></textarea></label>
+            </div>
+            <div class="subhead"><div><h4>Penilaian Diri</h4><p>Empat kompetensi guru, skala 0–100.</p></div></div>
+            <div class="form-grid form-grid-2">
+              <label class="field"><span>Kompetensi 1</span><input data-bind="reflectionOverview.competencies.0.name" type="text" /></label>
+              <label class="field"><span>Nilai 1</span><input data-bind="reflectionOverview.competencies.0.value" type="number" min="0" max="100" /></label>
+              <label class="field field-full"><span>Catatan 1</span><input data-bind="reflectionOverview.competencies.0.note" type="text" /></label>
+              <label class="field"><span>Kompetensi 2</span><input data-bind="reflectionOverview.competencies.1.name" type="text" /></label>
+              <label class="field"><span>Nilai 2</span><input data-bind="reflectionOverview.competencies.1.value" type="number" min="0" max="100" /></label>
+              <label class="field field-full"><span>Catatan 2</span><input data-bind="reflectionOverview.competencies.1.note" type="text" /></label>
+              <label class="field"><span>Kompetensi 3</span><input data-bind="reflectionOverview.competencies.2.name" type="text" /></label>
+              <label class="field"><span>Nilai 3</span><input data-bind="reflectionOverview.competencies.2.value" type="number" min="0" max="100" /></label>
+              <label class="field field-full"><span>Catatan 3</span><input data-bind="reflectionOverview.competencies.2.note" type="text" /></label>
+              <label class="field"><span>Kompetensi 4</span><input data-bind="reflectionOverview.competencies.3.name" type="text" /></label>
+              <label class="field"><span>Nilai 4</span><input data-bind="reflectionOverview.competencies.3.value" type="number" min="0" max="100" /></label>
+              <label class="field field-full"><span>Catatan 4</span><input data-bind="reflectionOverview.competencies.3.note" type="text" /></label>
+            </div>
+          </article>
+
+          <div class="panel-head panel-head-sub">
+            <div><h2>Refleksi per Siklus</h2><p>Kekuatan, tantangan, dan rencana perbaikan.</p></div>
+            <button class="btn btn-primary" data-add="reflection"><span data-icon="plus" data-size="16"></span> Tambah Refleksi</button>
+          </div>
+          <div class="admin-list" id="reflectionList"></div>
+        </section>
+
+        <!-- ---------------------- ARSIP ---------------------- -->
+        <section class="panel" data-panel="arsip">
+          <div class="panel-head">
+            <div>
+              <span class="eyebrow">Arsip</span>
+              <h2>Google Drive</h2>
+              <p>Daftar berkas yang dapat dibuka langsung dari portofolio.</p>
+            </div>
+            <button class="btn btn-primary" data-add="archive"><span data-icon="plus" data-size="16"></span> Tambah Arsip</button>
+          </div>
+
+          <div class="callout" id="archiveCallout">
+            <span data-icon="folder" data-size="20"></span>
+            <div>
+              <strong>Simpan tautan, bukan berkas besar.</strong>
+              <p>Unggah modul ke Google Drive, atur akses menjadi “Siapa saja yang memiliki link”, lalu tempel tautannya di sini. Portofolio akan menampilkan tombol yang langsung membuka arsip tersebut.</p>
+            </div>
+          </div>
+
+          <div class="admin-list" id="archiveList"></div>
+        </section>
+
+        <!-- ---------------------- DRIVE ---------------------- -->
+        <section class="panel" data-panel="drive">
+          <div class="panel-head">
+            <div>
+              <span class="eyebrow">Integrasi</span>
+              <h2>Google Drive</h2>
+              <p>Hubungkan akun Google untuk mengunggah modul dan video langsung dari studio ini.</p>
+            </div>
+            <span class="drive-status" id="driveStatus"><span class="status-dot"></span> Belum terhubung</span>
+          </div>
+
+          <div class="callout callout-warn" id="driveSetupNotice">
+            <span data-icon="alert" data-size="20"></span>
+            <div>
+              <strong>Perlu Client ID dari Google Cloud Console.</strong>
+              <p>Integrasi ini menggunakan OAuth resmi Google dengan scope <code>drive.file</code>, sehingga aplikasi hanya dapat mengakses berkas yang dibuatnya sendiri. Ikuti panduan di bawah (sekali saja, gratis).</p>
+            </div>
+          </div>
+
+          <div class="dash-columns">
+            <article class="admin-card">
+              <div class="card-head"><div><h3>Konfigurasi</h3><p>Tersimpan otomatis di browser.</p></div></div>
+              <div class="form-grid">
+                <label class="field field-full">
+                  <span>OAuth Client ID</span>
+                  <input data-bind="settings.drive.clientId" type="text" placeholder="xxxxx.apps.googleusercontent.com" spellcheck="false" />
+                </label>
+                <label class="field field-full">
+                  <span>API Key (opsional)</span>
+                  <input data-bind="settings.drive.apiKey" type="text" placeholder="AIza..." spellcheck="false" />
+                </label>
+                <label class="field field-full">
+                  <span>Nama Folder</span>
+                  <input data-bind="settings.drive.folderName" type="text" placeholder="E-Portfolio Arfido" />
+                </label>
+                <label class="field field-full">
+                  <span>Folder ID</span>
+                  <input data-bind="settings.drive.folderId" type="text" placeholder="Terisi otomatis setelah folder dibuat" spellcheck="false" />
+                </label>
+                <label class="check-field field-full">
+                  <input data-bind="settings.drive.autoShare" type="checkbox" />
+                  <span>Bagikan berkas secara publik (siapa saja yang memiliki link dapat melihat)</span>
+                </label>
+              </div>
+              <div class="btn-row">
+                <button class="btn btn-primary btn-sm" id="driveConnect"><span data-icon="drive" data-size="15"></span> Hubungkan</button>
+                <button class="btn btn-ghost btn-sm" id="driveFolder"><span data-icon="folder" data-size="15"></span> Buat / Temukan Folder</button>
+                <button class="btn btn-ghost btn-sm" id="driveTest"><span data-icon="check" data-size="15"></span> Uji Koneksi</button>
+              </div>
+              <div class="drive-log" id="driveLog"></div>
+            </article>
+
+            <article class="admin-card">
+              <div class="card-head"><div><h3>Uji Unggah</h3><p>Pastikan izin dan folder bekerja.</p></div></div>
+              <div class="upload-drop" id="driveDrop">
+                <span data-icon="upload" data-size="26"></span>
+                <strong>Pilih berkas untuk diunggah</strong>
+                <small>PDF, gambar, atau video pendek · maksimal 6 MB untuk uji cepat</small>
+                <input type="file" id="driveFile" hidden />
+              </div>
+              <div id="driveUploadResult"></div>
+
+              <div class="subhead"><div><h4>Panduan Singkat</h4></div></div>
+              <ol class="guide-list">
+                <li>Buka <a href="https://console.cloud.google.com/" target="_blank" rel="noopener">Google Cloud Console</a>, buat project baru.</li>
+                <li>Aktifkan <strong>Google Drive API</strong> pada menu APIs &amp; Services.</li>
+                <li>Atur <strong>OAuth consent screen</strong> (External, tambahkan email Anda sebagai test user).</li>
+                <li>Buat <strong>OAuth Client ID</strong> tipe <em>Web application</em>.</li>
+                <li>Tambahkan <strong>Authorized JavaScript origin</strong>: <code id="originHint">http://localhost:5500</code> dan domain hosting Anda.</li>
+                <li>Tempel Client ID di kolom kiri, simpan, lalu klik <strong>Hubungkan</strong>.</li>
+              </ol>
+              <p class="hint">Panduan lengkap tersedia di berkas <code>PANDUAN-GOOGLE-DRIVE.md</code> pada folder proyek.</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- ---------------------- PENGATURAN ---------------------- -->
+        <section class="panel" data-panel="pengaturan">
+          <div class="dash-columns">
+            <article class="admin-card">
+              <div class="card-head"><div><h3>Ganti Passcode</h3><p>Gunakan passcode yang kuat dan mudah Anda ingat.</p></div></div>
+              <form id="passForm" class="form-grid">
+                <label class="field field-full"><span>Passcode Saat Ini</span><input type="password" id="passCurrent" required autocomplete="current-password" /></label>
+                <label class="field"><span>Passcode Baru</span><input type="password" id="passNew" required minlength="6" autocomplete="new-password" /></label>
+                <label class="field"><span>Ulangi Passcode Baru</span><input type="password" id="passConfirm" required minlength="6" autocomplete="new-password" /></label>
+                <p class="form-error field-full" id="passError" hidden></p>
+                <p class="form-success field-full" id="passSuccess" hidden>Passcode berhasil diperbarui.</p>
+                <div class="field-full"><button type="submit" class="btn btn-primary btn-sm">Simpan Passcode</button></div>
+              </form>
+            </article>
+
+            <article class="admin-card">
+              <div class="card-head"><div><h3>Backup &amp; Restore</h3><p>Data tersimpan di browser ini saja.</p></div></div>
+              <div class="backup-actions">
+                <button class="btn btn-ghost btn-sm" id="exportBtn"><span data-icon="download" data-size="15"></span> Export Data (JSON)</button>
+                <label class="btn btn-ghost btn-sm">
+                  <span data-icon="upload" data-size="15"></span><span>Import Data</span>
+                  <input type="file" id="importInput" accept="application/json,.json" hidden />
+                </label>
+                <button class="btn btn-ghost btn-sm" id="backupDriveBtn"><span data-icon="drive" data-size="15"></span> Backup ke Drive</button>
+              </div>
+              <p class="hint">Export mencakup seluruh teks dan tautan. Foto yang diunggah lokal tidak ikut dalam JSON; gunakan Google Drive untuk arsip foto permanen.</p>
+              <div class="storage-detail" id="storageDetail"></div>
+            </article>
+          </div>
+
+          <article class="admin-card danger-card">
+            <div class="card-head"><div><h3>Reset Data</h3><p>Kembalikan seluruh konten ke contoh bawaan.</p></div></div>
+            <p class="hint">Tindakan ini tidak dapat dibatalkan. Export data terlebih dahulu jika ingin menyimpan versi saat ini.</p>
+            <button class="btn btn-danger btn-sm" id="resetBtn"><span data-icon="trash" data-size="15"></span> Reset ke Data Bawaan</button>
+          </article>
+
+          <article class="admin-card">
+            <div class="card-head"><div><h3>Tentang Studio</h3><p>E-Portfolio PPG Informatika UMS.</p></div></div>
+            <div class="about-grid">
+              <div><small>Pemilik</small><strong id="aboutOwner">Arfido Ramadhani</strong></div>
+              <div><small>Versi Data</small><strong id="aboutVersion">1</strong></div>
+              <div><small>Terakhir Diubah</small><strong id="aboutUpdated">—</strong></div>
+              <div><small>Mode Penyimpanan</small><strong>LocalStorage + IndexedDB</strong></div>
+            </div>
+            <p class="hint">Aplikasi statis tanpa server. Untuk publikasi, unggah folder ini ke Netlify, Vercel, GitHub Pages, atau hosting kampus.</p>
+          </article>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- ============================ EDITOR MODAL ============================ -->
+  <div class="admin-modal" id="editorModal" aria-hidden="true">
+    <div class="admin-modal-backdrop" data-close="1"></div>
+    <div class="admin-modal-panel" role="dialog" aria-modal="true" aria-labelledby="editorTitle">
+      <header class="editor-head">
+        <div><span class="eyebrow" id="editorKicker">Editor</span><h2 id="editorTitle">Tambah</h2></div>
+        <button class="editor-close" data-close="1" aria-label="Tutup"><span data-icon="x" data-size="19"></span></button>
+      </header>
+      <div class="editor-body" id="editorForm"></div>
+      <footer class="editor-foot">
+        <span class="editor-hint" id="editorHint"></span>
+        <div class="btn-row">
+          <button class="btn btn-ghost btn-sm" data-close="1">Batal</button>
+          <button class="btn btn-primary btn-sm" id="editorSave"><span data-icon="save" data-size="15"></span> Simpan</button>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="assets/js/store.js"></script>
+  <script src="assets/js/media.js"></script>
+  <script src="assets/js/drive.js"></script>
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arfido Ramadhani — E-Portfolio PPG Informatika UMS</title>
+  <meta name="description" content="E-Portfolio Arfido Ramadhani, S.Kom — calon guru Informatika Universitas Muhammadiyah Surakarta. Rancangan pembelajaran, video praktik mengajar, analisis, dan arsip Google Drive." />
+  <meta name="theme-color" content="#f6f1e7" />
+  <meta property="og:title" content="Arfido Ramadhani — E-Portfolio PPG Informatika" />
+  <meta property="og:description" content="Mengajar dengan logika, mendidik dengan hati. Portofolio praktik mengajar mandiri siklus 1–4." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%231f4fff'/%3E%3Cstop offset='1' stop-color='%23008f8a'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='%23fffdf8'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='700' fill='url(%23g)' text-anchor='middle'%3EAR%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#profil">Lewati ke konten utama</a>
+
+  <div class="bg-fx" aria-hidden="true">
+    <div class="aurora aurora-1"></div>
+    <div class="aurora aurora-2"></div>
+    <div class="aurora aurora-3"></div>
+    <div class="grid-lines"></div>
+    <div class="grain"></div>
+  </div>
+
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollBar"></span></div>
+
+  <header class="site-nav" id="siteNav">
+    <a class="brand" href="#beranda" aria-label="Kembali ke atas">
+      <span class="brand-mark">AR</span>
+      <span class="brand-text"><strong>Arfido</strong><small>E-Portfolio</small></span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Navigasi utama">
+      <a href="#profil" class="nav-link">Profil</a>
+      <a href="#rancangan" class="nav-link">Rancangan</a>
+      <a href="#video" class="nav-link">Video</a>
+      <a href="#refleksi" class="nav-link">Refleksi</a>
+      <a href="#arsip" class="nav-link">Arsip</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn btn-ghost btn-sm admin-link" href="admin.html">
+        <span data-icon="settings" data-size="16"></span>
+        <span>Mode Admin</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="navLinks">
+        <span data-icon="menu" data-size="20"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============================ HERO ============================ -->
+    <section class="hero" id="beranda">
+      <div class="container hero-inner">
+        <div class="hero-copy reveal">
+          <span class="eyebrow-badge">
+            <span class="pulse-dot"></span>
+            <span id="heroBadge">E-Portfolio PPG Informatika · UMS</span>
+          </span>
+          <h1 class="hero-title">
+            <span class="line" id="heroLine1">Arfido</span>
+            <span class="line grad-text" id="heroLine2">Ramadhani</span>
+          </h1>
+          <p class="hero-kicker" id="heroKicker">Mengajar dengan logika, mendidik dengan hati.</p>
+          <p class="hero-tagline" id="heroTagline"></p>
+          <div class="hero-actions">
+            <a href="#profil" class="btn btn-primary">
+              <span>Jelajahi Portofolio</span>
+              <span data-icon="arrowRight" data-size="18"></span>
+            </a>
+            <a href="#video" class="btn btn-ghost">
+              <span class="btn-play" data-icon="play" data-size="14"></span>
+              <span>Video Praktik</span>
+            </a>
+          </div>
+          <div class="hero-meta" id="heroMeta"></div>
+        </div>
+
+        <div class="hero-visual reveal" aria-hidden="true">
+          <div class="portrait-shell">
+            <div class="portrait-glow"></div>
+            <div class="portrait-frame" data-media-wrap>
+              <span class="portrait-initials" id="heroInitials">AR</span>
+              <img id="heroPhoto" alt="Foto Arfido Ramadhani" hidden />
+              <span class="portrait-shine"></span>
+            </div>
+            <div class="orbit-ring"></div>
+            <span class="orbit-dot"></span>
+            <div class="float-card fc-1">
+              <span class="float-icon accent-violet" data-icon="layers" data-size="18"></span>
+              <div><strong>4 Siklus</strong><small>Praktik mandiri</small></div>
+            </div>
+            <div class="float-card fc-2">
+              <span class="float-icon accent-cyan" data-icon="drive" data-size="18"></span>
+              <div><strong>Google Drive</strong><small>Arsip terhubung</small></div>
+            </div>
+            <div class="float-card fc-3">
+              <span class="float-icon accent-pink" data-icon="sparkles" data-size="18"></span>
+              <div><strong>PPG Informatika</strong><small>UMS 2026</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="hero-stats reveal" id="heroStats"></div>
+      </div>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span>Rancangan Pembelajaran</span><span class="dot">✦</span>
+          <span>Video Praktik Mengajar</span><span class="dot">✦</span>
+          <span>Analisis Mendalam</span><span class="dot">✦</span>
+          <span>Refleksi Siklus 1–4</span><span class="dot">✦</span>
+          <span>Google Drive</span><span class="dot">✦</span>
+          <span>PPG Informatika UMS</span><span class="dot">✦</span>
+          <span>Rancangan Pembelajaran</span><span class="dot">✦</span>
+          <span>Video Praktik Mengajar</span><span class="dot">✦</span>
+          <span>Analisis Mendalam</span><span class="dot">✦</span>
+          <span>Refleksi Siklus 1–4</span><span class="dot">✦</span>
+          <span>Google Drive</span><span class="dot">✦</span>
+          <span>PPG Informatika UMS</span><span class="dot">✦</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ PROFIL ============================ -->
+    <section class="section" id="profil">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">E-Portfolio 1 — Refleksi Awal</span>
+          <h2>Berakar dari desa,<br /><span class="grad-text">tumbuh untuk mengajar.</span></h2>
+          <p>Refleksi awal sebagai fondasi karakter: siapa saya, dari mana saya berasal, dan mengapa saya memilih menjadi guru.</p>
+          <div class="profile-parts reveal" aria-label="Tiga komponen E-Portfolio 1">
+            <span><b>01</b> Profil Mahasiswa</span>
+            <span><b>02</b> Asal &amp; Keunikan Daerah</span>
+            <span><b>03</b> Inspirasi, Tujuan &amp; Visi</span>
+          </div>
+        </div>
+
+        <div class="profile-grid">
+          <aside class="profile-card glass reveal">
+            <div class="profile-photo" data-media-wrap>
+              <span class="profile-initials" id="profileInitials">AR</span>
+              <img id="profilePhoto" alt="Foto profil Arfido Ramadhani" hidden />
+              <span class="photo-ring"></span>
+            </div>
+            <h3 id="profileName">Arfido Ramadhani, S.Kom</h3>
+            <p class="profile-role" id="profileRole"></p>
+            <div class="profile-divider"></div>
+            <ul class="facts" id="profileFacts"></ul>
+            <a class="btn btn-ghost btn-block btn-sm" id="profileMail" href="#">
+              <span data-icon="mail" data-size="16"></span>
+              <span>Hubungi Saya</span>
+            </a>
+            <p class="profile-quote-mini" id="profileQuoteMini"></p>
+          </aside>
+
+          <div class="profile-main">
+            <article class="glass story-card reveal">
+              <div class="card-label"><span data-icon="compass" data-size="16"></span> Asal &amp; Keunikan Daerah</div>
+              <h3 id="storyTitle"></h3>
+              <div class="story-text" id="originStory"></div>
+            </article>
+
+            <div class="unique-grid" id="uniqueGrid"></div>
+
+            <div class="two-col">
+              <article class="glass reveal">
+                <div class="card-label"><span data-icon="sparkles" data-size="16"></span> Inspirasi</div>
+                <h3>Mengapa menjadi guru?</h3>
+                <div class="story-text" id="inspirationText"></div>
+              </article>
+              <article class="glass reveal">
+                <div class="card-label"><span data-icon="compass" data-size="16"></span> Tujuan</div>
+                <h3>Guru profesional seperti apa?</h3>
+                <div class="story-text" id="purposeText"></div>
+              </article>
+            </div>
+
+            <article class="vision-card reveal">
+              <div class="vision-top">
+                <span class="card-label light"><span data-icon="sun" data-size="16"></span> <span id="visionTitle">Visi saya</span></span>
+                <div class="pillar-row" id="pillarRow"></div>
+              </div>
+              <p class="vision-text" id="visionText"></p>
+              <div class="vision-lines" aria-hidden="true"><span></span><span></span><span></span></div>
+            </article>
+
+            <blockquote class="quote-card reveal">
+              <span class="quote-mark" aria-hidden="true">“</span>
+              <p id="quoteText"></p>
+              <footer>— <span id="quoteAuthor">Arfido Ramadhani</span></footer>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ RANCANGAN ============================ -->
+    <section class="section section-alt" id="rancangan">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">E-Portfolio 2 — Rancangan Pembelajaran</span>
+          <h2>Rencana yang <span class="grad-text">hidup</span> di ruang kelas.</h2>
+          <p>Modul ajar terbaik dari praktik mengajar mandiri siklus 1, dilengkapi rancangan siklus 2 sampai 4. Setiap modul disertai analisis keputusan pembelajaran, diferensiasi, asesmen, dan refleksi perbaikan.</p>
+        </div>
+
+        <div class="toolbar-row reveal">
+          <div class="tabs" id="cycleTabs" role="tablist" aria-label="Filter siklus">
+            <button class="tab is-active" data-filter="all" role="tab" aria-selected="true">Semua Siklus</button>
+            <button class="tab" data-filter="1" role="tab" aria-selected="false">Siklus 1</button>
+            <button class="tab" data-filter="2-4" role="tab" aria-selected="false">Siklus 2–4</button>
+          </div>
+          <span class="toolbar-note" id="lessonCount">4 modul ajar</span>
+        </div>
+
+        <div class="lesson-grid" id="lessonGrid"></div>
+
+        <div class="drive-strip reveal">
+          <div class="drive-strip-left">
+            <span class="drive-badge" data-icon="drive" data-size="22"></span>
+            <div>
+              <strong>Modul lengkap tersimpan di Google Drive</strong>
+              <p>Klik tombol pada setiap kartu untuk membuka dokumen asli, atau buka folder arsip untuk melihat seluruh berkas.</p>
+            </div>
+          </div>
+          <a class="btn btn-primary btn-sm" id="lessonFolderBtn" href="#arsip">
+            <span>Buka Arsip</span>
+            <span data-icon="arrowUpRight" data-size="16"></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ VIDEO ============================ -->
+    <section class="section" id="video">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">E-Portfolio 3 — Video Praktik</span>
+          <h2>Melihat diri sendiri,<br /><span class="grad-text">memperbaiki cara mengajar.</span></h2>
+          <p>Rekaman pelaksanaan pembelajaran dari rancangan yang dipilih, disertai analisis momen penting, kekuatan, dan area perbaikan.</p>
+        </div>
+
+        <div class="video-grid" id="videoGrid"></div>
+
+        <div class="video-note reveal">
+          <span data-icon="eye" data-size="18"></span>
+          <p><strong>Catatan analisis:</strong> setiap video ditonton ulang minimal dua kali, yaitu untuk mengamati respons peserta didik dan untuk mengevaluasi keputusan guru. Temuan dari tiap siklus menjadi dasar perbaikan siklus berikutnya.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ REFLEKSI ============================ -->
+    <section class="section section-alt" id="refleksi">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">E-Portfolio 4 — Analisis &amp; Refleksi</span>
+          <h2>Belajar dari setiap <span class="grad-text">siklus.</span></h2>
+          <p>Refleksi bukan sekadar mencatat kekurangan, tetapi membaca pola, menguji asumsi, dan merancang perbaikan yang konkret.</p>
+        </div>
+
+        <article class="glass overview-card reveal">
+          <div class="overview-copy">
+            <div class="card-label"><span data-icon="refresh" data-size="16"></span> Analisis Perkembangan</div>
+            <div class="story-text" id="reflectionIntro"></div>
+            <div class="followup" id="reflectionFollowUp"></div>
+          </div>
+          <div class="competency-panel">
+            <h3>Penilaian Diri</h3>
+            <p class="muted-small">Skala 0–100 · hasil refleksi mandiri</p>
+            <div id="competencyBars"></div>
+          </div>
+        </article>
+
+        <div class="timeline" id="reflectionTimeline"></div>
+      </div>
+    </section>
+
+    <!-- ============================ ARSIP ============================ -->
+    <section class="section" id="arsip">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">05 — Arsip Google Drive</span>
+          <h2>Satu pintu menuju <span class="grad-text">semua berkas.</span></h2>
+          <p>Modul ajar, asesmen, dokumentasi, dan video tersimpan dalam folder Google Drive. Klik kartu untuk langsung membuka arsip aslinya.</p>
+        </div>
+
+        <div class="archive-toolbar reveal">
+          <label class="search-box">
+            <span data-icon="search" data-size="18"></span>
+            <input type="search" id="archiveSearch" placeholder="Cari arsip, misalnya: modul siklus 3" aria-label="Cari arsip" />
+          </label>
+          <div class="filter-chips" id="archiveFilters"></div>
+        </div>
+
+        <div class="archive-grid" id="archiveGrid"></div>
+        <div class="empty-state" id="archiveEmpty" hidden>
+          <span data-icon="folder" data-size="30"></span>
+          <h3>Tidak ada arsip yang cocok</h3>
+          <p>Coba kata kunci lain atau pilih kategori berbeda.</p>
+        </div>
+
+        <div class="drive-callout reveal" id="driveCallout">
+          <div class="drive-callout-art" aria-hidden="true">
+            <span class="drive-logo" data-icon="drive" data-size="38"></span>
+            <span class="ring r1"></span><span class="ring r2"></span>
+          </div>
+          <div class="drive-callout-text">
+            <span class="eyebrow">Terhubung dengan Google Drive</span>
+            <h3>Arsip lengkap, rapi, dan selalu diperbarui.</h3>
+            <p>Folder ini menjadi sumber tunggal untuk modul ajar dan dokumentasi praktik. Tautan dibuka di tab baru sehingga Anda tetap dapat menjelajahi portofolio ini.</p>
+            <div class="drive-callout-actions">
+              <a class="btn btn-primary btn-sm" id="driveFolderBtn" href="#" target="_blank" rel="noopener" hidden>
+                <span>Buka Folder Drive</span>
+                <span data-icon="arrowUpRight" data-size="16"></span>
+              </a>
+              <span class="drive-hint" id="driveHint">Folder Drive belum ditautkan.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-cta reveal">
+        <div>
+          <span class="eyebrow">Terima kasih telah berkunjung</span>
+          <h2>Mari bertukar gagasan tentang<br /><span class="grad-text">pendidikan dan teknologi.</span></h2>
+        </div>
+        <a class="btn btn-primary" id="footerMail" href="#">
+          <span data-icon="mail" data-size="18"></span>
+          <span>Kirim Pesan</span>
+        </a>
+      </div>
+
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="#beranda">
+            <span class="brand-mark">AR</span>
+            <span class="brand-text"><strong>Arfido</strong><small>E-Portfolio</small></span>
+          </a>
+          <p id="footerTagline"></p>
+          <div class="footer-socials">
+            <a href="admin.html" class="social-btn" aria-label="Mode Admin"><span data-icon="settings" data-size="17"></span></a>
+            <a href="#arsip" class="social-btn" aria-label="Arsip"><span data-icon="folder" data-size="17"></span></a>
+            <a href="#video" class="social-btn" aria-label="Video"><span data-icon="video" data-size="17"></span></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigasi</h4>
+          <a href="#profil">Profil Mahasiswa</a>
+          <a href="#rancangan">Rancangan Pembelajaran</a>
+          <a href="#video">Video Praktik</a>
+          <a href="#refleksi">Analisis &amp; Refleksi</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Identitas</h4>
+          <span id="footerCampus"></span>
+          <span id="footerProgram"></span>
+          <span id="footerOrigin"></span>
+          <span id="footerUpdated" class="muted-small"></span>
+        </div>
+
+        <div class="footer-col">
+          <h4>Kontak</h4>
+          <a id="footerEmail" href="#"></a>
+          <span id="footerAddress"></span>
+          <a href="admin.html" class="footer-admin">Masuk Mode Admin →</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="year">2026</span> Arfido Ramadhani. Dibuat dengan niat baik untuk pendidikan.</p>
+        <a href="#beranda" class="to-top" aria-label="Kembali ke atas"><span data-icon="arrowUp" data-size="18"></span> Ke atas</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close="1"></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" data-close="1" aria-label="Tutup"><span data-icon="x" data-size="20"></span></button>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <noscript>
+    <div class="noscript">Portofolio ini membutuhkan JavaScript untuk menampilkan konten. Silakan aktifkan JavaScript pada browser Anda.</div>
+  </noscript>
+
+  <script src="assets/js/store.js"></script>
+  <script src="assets/js/media.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

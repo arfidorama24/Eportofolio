@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8" /><style>html,body{margin:0;background:#fff;font:14px monospace}</style></head>
+<body>
+  <pre id="out">loading</pre>
+  <iframe id="frame" src="/index.html" style="width:1440px;height:1000px;position:absolute;left:-9999px"></iframe>
+  <script>
+    const frame = document.getElementById("frame");
+    frame.addEventListener("load", () => {
+      const doc = frame.contentDocument;
+      const items = [...doc.querySelectorAll("section[id], footer[id], main[id]")].map((el) => {
+        const r = el.getBoundingClientRect();
+        return el.id + " top=" + Math.round(r.top + frame.contentWindow.scrollY) + " height=" + Math.round(r.height);
+      });
+      document.getElementById("out").textContent =
+        "pageHeight=" + doc.documentElement.scrollHeight + "\n" + items.join("\n");
+    });
+  </script>
+</body>
+</html>
