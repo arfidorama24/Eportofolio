@@ -30,7 +30,7 @@
     "heroLine2": "Ramadhani",
     "heroKicker": "Mewujudkan guru yang profesional, berintegritas, dan adaptif",
     "tagline": "",
-    "photo": "assets/pp.JPG",
+    "photo": "assets/p.png",
     "pillars": [
       "Profesional",
       "Berintegritas",
