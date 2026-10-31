@@ -6,7 +6,7 @@
   "use strict";
 
   const STORAGE_KEY = "eportfolio:arfido:v1";
-  const DEFAULT_PASSCODE = "arfido2026";
+  const DEFAULT_PASSCODE = "arfido123";
 
   const DEFAULT_DATA = {
   "meta": {
